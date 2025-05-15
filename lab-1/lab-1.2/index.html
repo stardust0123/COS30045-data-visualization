@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description"	content="Data Visualisation Exercise 1"/>
+	<meta name="keywords"		  content="HTML, CSS"/>
+	<meta name="author"			  content="Tran Thien Thao Vy"/>
+
+	<title>Task 1.1 HTML and CSS Demo Page</title>
+	<link rel="stylesheet" href="style.css"/>
+
+</head>
+
+<body>
+
+	<h1>Pets and the Pandemic</h1>
+	<h2>Author of Interesting Article</h2>
+
+	<p>A report from Animal Medicines Australia (AMA) has found that many Australians took the opportunity to introduce a pet into their household during the pandemic. Their survey indicated that there was a significant increase in the percent of households taking in a new dog, fish or bird. Their research also indicated that pets had a number of positive influences on their lives such as:
+	</p>
+
+	<ul>
+		<li>companionship</li>
+		<li>better mental health</li>
+		<li>joy and happiness</li>
+
+	</ul>
+
+	<div class="btn-group">
+    	<button class="button1" onclick="showChart(0)">2019</button>
+    	<button class="button2" onclick="showChart(1)">2021</button>
+    	<button class="button3" onclick="showChart(2)">Both</button>
+  	</div>
+
+
+	<img class="excel-image" id="chart" src="chart1.png" alt="Chart 1: Pet ownership in 2019">
+  	<p id="caption">Chart 1: Pet ownership in 2019</p>
+
+
+	<script>
+    const charts = [
+      { src: "chart1.png", alt: "Chart 1: Pet ownership in 2019", caption: "Percent of most popular pets owned by Australian in 2019" },
+      { src: "chart2.png", alt: "Chart 2: Pet ownership in 2021", caption: "Percent of most popular pets owned by Australian in 2021" },
+      { src: "chart3.png", alt: "Chart 3: Pet ownership in 2019 and 2021", caption: "Percent of most popular pets owned by Australian in 2019 and 2021" }
+    ];
+
+    function showChart(index) {
+      const chartImg = document.getElementById("chart");
+      const caption = document.getElementById("caption");
+
+      chartImg.src = charts[index].src;
+      chartImg.alt = charts[index].alt;
+      caption.textContent = charts[index].caption;
+    }
+  </script>
+	
+	<div style="display: flex; gap: 10px;">
+		<image src="cat.jpg" class="round-image"/>
+		<image src="dog.png" class="round-image"/>
+		<image src="fish.jpg"class="round-image"/>
+	</div>
+	
+
+
+	<p>With the increase in pet ownership the AMA are encouraging policy makers to consider the needs of companion animals and their owners when considering rental, strata and body corporate regulations are well as accepting animals in public places and transport.
+	</p>	
+
+	<footer>COS30045 Data Visualisation</footer>
+
+</body>
+</html>
