@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2.1 D3 Data Binding</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin-left: 20px; 
+    margin-top: 20px; 
+}
+</style>
+<body>
+  <h1>The D3 Journey starts here</h1>
+
+  <script>
+    const data = [14, 5, 26, 23, 9];
+
+    d3.select("body")
+      .selectAll("p")
+      .data(data)
+      .enter()
+      .append("p")
+      .html(function(d) {
+        if (d > 10) {
+          return `<strong style="color:#FFD700;">Joe watched ${d} cat videos! WARNING: Too many!</strong>`;
+        } else {
+          return `Joe watched ${d} cat videos.`;
+        }
+      });
+
+    console.log(d3.selectAll("p"));
+  </script>
+
+  <br />
+  <footer>
+    COS30045 Data Visualization<br/>
+    Tran Thien Thao Vy
+  </footer>
+</body>
+</html>
