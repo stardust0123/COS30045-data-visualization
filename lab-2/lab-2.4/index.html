@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2.4 Loading Data from CSV</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        svg {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Task 2.4 - Loading data from CSV </h1>
+    <script>
+        const w = 500;
+        const h = 300;
+        const svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        let wombatSightings = [];
+        function barChart(){
+            svg.selectAll("rect")
+            .data(wombatSightings)
+            .enter()
+            .append("rect")
+            .attr("width", w/wombatSightings.length - 1)
+            .attr("height", function(d){
+                return d.wombats * 4;
+            })
+            .attr("x", function(d, i) {
+                return i * (w/wombatSightings.length);
+            })
+            .attr("y", function(d){
+                return h - (d.wombats * 4);
+            })
+            .attr("fill", function(d){
+                return d.wombats > 10 ? "#CAE8BD" : "#B0DB9C";
+            })
+        }
+        d3.csv("Task_2.4_data.csv").then(function(data){
+            console.log(data);
+            wombatSightings = data;
+            barChart(wombatSightings);
+        })
+
+    </script>
+    <footer>
+        <p>COS30045 - Data Visualization</p>
+    </footer>
+</body>
