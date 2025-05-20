@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Lab 2.2 COS30045</title>
+
+</head>
+<style>
+    body{ 
+        margin-top: 40px;
+        margin-left: 40px;
+    }
+</style>
+<body>
+    <h1>Drawing with Data</h1>
+    <script> 
+    var h = 500;
+    var w = 500;
+    var dataset = [14, 5, 26, 23, 9, 12, 8, 3, 19, 15, 7, 11, 4, 6, 10, 2, 1, 18, 17, 16, 20]; 
+
+
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+    var padding = 1; 
+    var barWidth = (w / dataset.length) - padding;
+
+
+    svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", function(d, i) {
+            return i * (barWidth + padding);
+        }) 
+        .attr("y", function(d){
+            return h - (d * 10);
+        })
+        .attr("height", function(d) {
+            return d * 10;
+        })
+        .attr("width", barWidth)
+        .attr("fill", "#66c2e1"); 
+
+
+
+    
+    </script>
+    <footer>
+        <p>COS30045</p>
+        <p>Tran Thien Thao Vy</p>
+    </footer>
+
+</body>
